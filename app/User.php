@@ -2,13 +2,17 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    private $roles = [
+        0 => '用户',
+        9 => '管理员',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role', 'avatar',
     ];
 
     /**
@@ -36,4 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getRoleAttribute($value)
+    {
+        return $this->roles[$value] ?? '未知';
+    }
+
+    public function getAvatarAttribute($value)
+    {
+        return $this->$value ?? 'default.png';
+    }
 }

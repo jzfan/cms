@@ -1,20 +1,32 @@
-
 // Body
 $body-bg: #f8fafc;
 
 // Typography
-$font-family-sans-serif: "Nunito", sans-serif;
+$font-family-sans-serif: "Nunito",
+sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
+$blue: #01b4ee;
 $indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66D9b;
-$red: #e3342f;
+$purple: #6819b2;
+$pink: #ea4b8b;
+$red: #cb013d;
 $orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
+$yellow: #feea00;
+$green: #92b002;
 $teal: #4dc0b5;
-$cyan: #6cb2eb;
+$cyan: #3b5999;
+
+// Map Level
+$table-bg-level: 0;
+$table-border-level: 3;
+
+$alert-bg-level: 0;
+$alert-border-level: 1;
+$alert-color-level: 10;
+
+//Components
+$card-cap-bg: #3b5999;
+$card-cap-color: #f8ffff;
