@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-header">
         用户列表
-        <button type="button" class="btn btn-primary btn-sm float-right rounded-circle" onclick='window.location="/admin/users/create"'>+</button>
+        <button type="button" class="btn btn-primary btn-sm float-right" onclick='window.location="/admin/users/create"'> + </button>
     </div>
     <div class="card-body">
         <table class="table table-hover table-responsive-md">
@@ -34,7 +34,7 @@
             </tbody>
         </table>
     </div>
-    <div class="card-footer bg-transparent">
+    <div class="card-footer">
         {{ $users->links() }}
     </div>
 </div>

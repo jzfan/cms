@@ -10,6 +10,17 @@
     <!-- Fonts -->
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+    .card-header {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .card-footer {
+        background-color: transparent;
+    }
+
+    </style>
 </head>
 
 <body>
@@ -24,9 +35,6 @@
                         @include('layouts.menu')
                     </div>
                     <div class="col-12 col-lg-10">
-                        <!--                         <div class="d-lg-block d-none">
-                            @include('layouts.breadcrumb')
-                        </div> -->
                         <div class="d-block d-lg-none mb-2">
                             @include('layouts.menu-hidden')
                         </div>

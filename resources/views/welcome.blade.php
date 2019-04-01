@@ -66,9 +66,9 @@
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
-            <a href="{{ url('/admin') }}" class="text-secondary">后台</a>
+            <button class="btn btn-outline-dark" onclick="window.location='/admin'">后台</button>
             @else
-            <a href="{{ route('login') }}">Login</a>
+            <button class="btn btn-outline-dark" onclick="window.location='/login'">登录</button>
             @if (Route::has('register'))
             <a href="{{ route('register') }}">Register</a>
             @endif
@@ -77,14 +77,13 @@
         @endif
         <div class="content">
             <div class="title m-b-md text-primary">
-                <small class="text-warning">Jz</small>
-                <span class="text-primary">Admin</span>
+                <span class="text-primary">JzAdmin</span>
             </div>
             <div class="links">
-                <a href=# style="color: #6f42c1">Doc</a>
-                <a href=# class="text-info">News</a>
-                <a href=# class="text-danger">Blog</a>
-                <a href=# class="text-success">GitHub</a>
+                <button class="btn btn-outline-info mx-3">Doc</button>
+                <button class="btn btn-outline-dark mx-3">News</button>
+                <button class="btn btn-outline-success mx-3">Blog</button>
+                <button class="btn btn-outline-danger mx-3">GitHub</button>
             </div>
         </div>
     </div>

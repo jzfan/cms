@@ -7,9 +7,12 @@
 git clone https://github.com/jzfan/admin.git
 cd admin
 composer install
+//配置数据库...
 php artisan migrate
 php db:seed
 ```
+
+
 
 ## License
 
