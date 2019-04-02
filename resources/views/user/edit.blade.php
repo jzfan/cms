@@ -17,8 +17,12 @@
             <div class="form-group">
                 <label>角色</label>
                 <select class="form-control" name='role'>
-                    <option value="0">用户</option>
-                    <option value="9">管理员</option>
+                    @foreach (\App\User::ROLES as $k => $v)
+                    <option value="{{ $k }}" @if ($v===$user->role)
+                        selected
+                        @endif
+                        >{{ $v }}</option>
+                    @endforeach
                 </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>

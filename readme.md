@@ -11,7 +11,12 @@ composer install
 php artisan migrate
 php db:seed
 ```
-
+## Auth
+```
+url: /admin
+email: admin@admin.com
+password: 123
+```
 
 
 ## License

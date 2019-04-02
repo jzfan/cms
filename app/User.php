@@ -9,7 +9,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    private $roles = [
+    const ROLES = [
         0 => '用户',
         9 => '管理员',
     ];
@@ -43,7 +43,7 @@ class User extends Authenticatable
 
     public function getRoleAttribute($value)
     {
-        return $this->roles[$value] ?? '未知';
+        return self::ROLES[$value] ?? '未知';
     }
 
     public function getAvatarAttribute($value)
