@@ -34,8 +34,8 @@ $input-btn-padding-x: 1.5rem;
 $input-btn-font-family: null;
 
 
-$input-btn-padding-y-sm: .5rem;
-$input-btn-padding-x-sm: 1rem;
+$input-btn-padding-y-sm: .25rem;
+$input-btn-padding-x-sm: .5rem;
 
 $input-btn-padding-y-lg: 1rem;
 $input-btn-padding-x-lg: 2rem;
@@ -52,16 +52,3 @@ $pagination-padding-y-sm: .5rem;
 $pagination-padding-x-sm: .75rem;
 $pagination-padding-y-lg: 1rem;
 $pagination-padding-x-lg: 2rem;
-
-html,
-body,
-#app,
-main,
-main>.container-fluid,
-main>.container-fluid>.row {
-    height: 100%;
-}
-
-.nav-item>.nav-link {
-    padding: 0;
-}

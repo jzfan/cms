@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
+use App\Exports\UsersExport;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -51,6 +52,11 @@ class UserController extends Controller
         if ($user->delete()) {
             return 'ok';
         }
+    }
+
+    public function export() 
+    {
+        return \Excel::download(new UsersExport, 'users.xlsx');
     }
 
     protected function checkInput($rule = [])

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
-    <div class="card-header">Dashboard</div>
+    <div class="card-header"><i class="iconfont icon-linechart"></i>统计图</div>
     <div class="card-body">
         <div class="chart-container" style="position: relative; height:30vh; width:75vw">
             <canvas id="chart-bar"></canvas>
@@ -15,15 +15,15 @@
 @push('js')
 <script>
 var data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    labels: [],
     datasets: [{
-        label: "Dataset #1",
-        backgroundColor: "rgba(255,99,132,0.2)",
-        borderColor: "rgba(255,99,132,1)",
+        label: "注册用户",
+        backgroundColor: "rgba(23,162,184,0.2)",
+        borderColor: "rgba(23,162,184,1)",
         borderWidth: 2,
-        hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        hoverBorderColor: "rgba(255,99,132,1)",
-        data: [65, 59, 20, 81, 56, 55, 40],
+        hoverBackgroundColor: "rgba(23,162,184,0.4)",
+        hoverBorderColor: "rgba(23,162,184,1)",
+        data: [],
     }]
 };
 
@@ -34,7 +34,7 @@ var options = {
             stacked: true,
             gridLines: {
                 display: true,
-                color: "rgba(255,99,132,0.2)"
+                color: "rgba(23,162,184,0.2)"
             }
         }],
         xAxes: [{
@@ -45,15 +45,25 @@ var options = {
     }
 };
 
-Chart.Bar('chart-bar', {
-    options: options,
-    data: data
-});
+axios.get('/api/users/chart')
+    .then(res => {
+        console.log(res.data)
+        for (let i in res.data) {
+            data.labels.push(i.slice(5))
+            data.datasets[0].data.push(res.data[i])
+        }
+        // data.datasets[0].data = res.data
 
-Chart.Line('chart-line', {
-    data: data,
-    options: options
-});
+        Chart.Bar('chart-bar', {
+            options: options,
+            data: data
+        });
+
+        Chart.Line('chart-line', {
+            data: data,
+            options: options
+        });
+    })
 
 </script>
 @endpush

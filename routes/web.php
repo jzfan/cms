@@ -24,5 +24,7 @@ Route::middleware('auth')
 	->prefix('admin')
 	->group(function () {
 		Route::get('/', 'DashboardController@index');
+		Route::get('plugins', 'DashboardController@plugins');
+		Route::get('users/export', 'UserController@export');
 		Route::resource('users', 'UserController');
 	});

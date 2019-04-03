@@ -6,6 +6,8 @@
 
 require('./bootstrap');
 require('chart.js');
+require('moment');
+window.Pikaday = require('pikaday');
 // window.Vue = require('vue');
 
 /**

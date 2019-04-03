@@ -66,9 +66,11 @@
         @if (Route::has('login'))
         <div class="top-right links">
             @auth
-            <button class="btn btn-outline-dark" onclick="window.location='/admin'">后台</button>
+            <button class="btn btn-outline-dark" onclick="window.location='/admin'">
+                <i class="iconfont icon-dashboard"></i>后台</button>
             @else
-            <button class="btn btn-outline-dark" onclick="window.location='/login'">登录</button>
+            <button class="btn btn-outline-dark" onclick="window.location='/login'">
+                <i class="iconfont icon-login"></i>登录</button>
             @if (Route::has('register'))
             <a href="{{ route('register') }}">Register</a>
             @endif
@@ -81,10 +83,10 @@
             </div>
             <div id="aplayer"></div>
             <div class="links">
-                <button class="btn btn-outline-info mx-3">Doc</button>
-                <button class="btn btn-outline-dark mx-3">News</button>
-                <button class="btn btn-outline-success mx-3">Blog</button>
-                <button class="btn btn-outline-danger mx-3" onclick="window.location='https://github.com/jzfan/admin'">GitHub</button>
+                <button class="btn btn-outline-info mx-3"><i class="iconfont icon-file"></i>Doc</button>
+                <button class="btn btn-outline-dark mx-3"><i class="iconfont icon-notification"></i>News</button>
+                <button class="btn btn-outline-success mx-3"><i class="iconfont icon-file"></i>Blog</button>
+                <button class="btn btn-outline-danger mx-3" onclick="window.location='https://github.com/jzfan/admin'"><i class="iconfont icon-github-fill"></i>GitHub</button>
             </div>
         </div>
     </div>

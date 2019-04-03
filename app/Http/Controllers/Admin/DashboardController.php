@@ -11,4 +11,9 @@ class DashboardController extends Controller
     {
     	return view('dashboard');
     }
+
+    public function plugins()
+    {
+    	return view('plugins');
+    }
 }

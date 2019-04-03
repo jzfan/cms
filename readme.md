@@ -18,6 +18,13 @@ email: admin@admin.com
 password: 123
 ```
 
+// ToDo
+1. slug name
+3. search user
+8. doc pics
+9. select2
+10. jwtoken
+11. 404, 500 page
 
 ## License
 

@@ -2,8 +2,15 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        用户列表
-        <button type="button" class="btn btn-primary btn-sm float-right" onclick='window.location="/admin/users/create"'> + </button>
+        <i class="iconfont icon-unorderedlist"></i>用户列表
+        <button type="button" class="btn btn-outline-secondary btn-sm float-right" onclick='window.location="/admin/users/create"'>
+            <i class="iconfont icon-plus"></i>
+            新增
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm float-right mr-2" onclick='window.location="/admin/users/export"'>
+            <i class="iconfont icon-file-excel"></i>
+            导出
+        </button>
     </div>
     <div class="card-body">
         <table class="table table-hover table-responsive-md">
@@ -26,8 +33,9 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->created_at->diffForHumans() }}</td>
                     <td>
-                        <button type="button" class="btn btn-sm btn-outline-primary" onclick='window.location="/admin/users/{{ $user->id }}/edit"'>编辑</button>
-                        <button type="button" class="btn btn-sm btn-outline-danger" onclick='deleteUser($(this))'>删除</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary" onclick='window.location="/admin/users/{{ $user->id }}/edit"'>
+                            <i class="iconfont icon-edit"></i>编辑</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger" onclick='deleteUser($(this))'><i class="iconfont icon-delete"></i>删除</button>
                     </td>
                 </tr>
                 @endforeach
@@ -45,6 +53,10 @@ function deleteUser(btn) {
     deleteTr(btn)
     flash('删除操作成功')
 }
+
+// function exportUsers() {
+//     axios.post('/admin/users/export')
+// }
 
 </script>
 @endpush

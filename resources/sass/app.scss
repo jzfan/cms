@@ -12,4 +12,29 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-@import '~aplayer/dist/APlayer.min.css';
+@import '/css/pikaday.css';
+@import '/css/iconfont.css';
+
+html,
+body,
+#app,
+main>.container-fluid,
+main>.container-fluid>.row {
+    height: 100%;
+}
+
+main {
+    height: calc(100% - 71px);
+}
+
+.nav-item>.nav-link {
+    padding: 0;
+}
+
+.iconfont {
+    margin-right: .5rem;
+}
+
+.btn-sm>.iconfont {
+    margin-right: 0;
+}
