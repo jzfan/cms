@@ -45,51 +45,60 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
-    const nav = getNav()
+    (function() {
 
-    toggleActiveNav()
-    // console.log(nav)
+        const nav = getNav()
+        toggleActiveNav()
+        // console.log(nav)
+        $('.btn-delete').click(function(e) {
+            deleteTr($(e.target))
+            flash('删除操作成功')
+        })
 
-    function getNav() {
-        return window.location.pathname.split('/').slice(0, 3).join('/')
-    }
+        function getNav() {
+            return window.location.pathname.split('/').slice(0, 3).join('/')
+        }
 
-    function toggleActiveNav() {
-        $('nav > .nav-link').removeClass('active')
-        $(`nav > .nav-link[href='${nav}']`).addClass('active')
+        function toggleActiveNav() {
+            $('nav > .nav-link').removeClass('active')
+            $(`nav > .nav-link[href='${nav}']`).addClass('active')
 
-    }
+        }
 
-    function showErrors() {
-        let errors = JSON.parse($('#errors').val())
-        for (item in errors) {
-            $(`[name='${item}']`).addClass('is-invalid')
-            for (message of errors[item]) {
-                $(`[name='${item}']`).after(`<div class="invalid-feedback">${message}</div>`)
+        function showErrors() {
+            let errors = JSON.parse($('#errors').val())
+            for (item in errors) {
+                $(`[name='${item}']`).addClass('is-invalid')
+                for (message of errors[item]) {
+                    $(`[name='${item}']`).after(`<div class="invalid-feedback">${message}</div>`)
+                }
             }
         }
-    }
 
-    function deleteTr(btn) {
-        if (confirm('确定删除？')) {
-            let tr = btn.parents('tr')
-            let id = tr.data('id')
-            axios.delete(`/admin/users/${id}`)
-                .then(res => {
-                    if (res.data === 'ok') {
-                        tr.hide('slow')
-                    }
-                })
+        function deleteTr(btn) {
+            if (confirm('确定删除？')) {
+                let tr = btn.parents('tr')
+                let id = tr.data('id')
+                axios.delete(`/admin/users/${id}`)
+                    .then(res => {
+                        if (res.data === 'ok') {
+                            tr.hide('slow')
+                        }
+                    })
+            }
         }
-    }
 
-    function flash(message) {
-        $('#notice-div').show()
-            .find('.alert').html(message)
-        setTimeout(() => {
-            $('#notice-div').hide('slow')
-        }, 3000)
-    }
+        function flash(message) {
+            $('#notice-div').show()
+                .find('.alert').html(message)
+            setTimeout(() => {
+                $('#notice-div').hide('slow')
+            }, 3000)
+        }
+        window['jzf'] = {}
+        window['jzf']['showErrors'] = showErrors
+        window['jzf']['flash'] = flash
+    })()
 
     </script>
     @stack('js')

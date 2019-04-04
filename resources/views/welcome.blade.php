@@ -84,7 +84,7 @@
             <div id="aplayer"></div>
             <div class="links">
                 <button class="btn btn-outline-info mx-3"><i class="iconfont icon-file"></i>Doc</button>
-                <button class="btn btn-outline-dark mx-3"><i class="iconfont icon-notification"></i>News</button>
+                <button class="btn btn-outline-dark mx-3" onclick="window.location='/news'"><i class="iconfont icon-notification"></i>News</button>
                 <button class="btn btn-outline-success mx-3"><i class="iconfont icon-file"></i>Blog</button>
                 <button class="btn btn-outline-danger mx-3" onclick="window.location='https://github.com/jzfan/admin'"><i class="iconfont icon-github-fill"></i>GitHub</button>
             </div>

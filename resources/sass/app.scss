@@ -27,8 +27,8 @@ main {
     height: calc(100% - 71px);
 }
 
-.nav-item>.nav-link {
-    padding: 0;
+.navbar-laravel .nav-link {
+    padding: 0
 }
 
 .iconfont {

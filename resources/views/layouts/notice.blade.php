@@ -8,7 +8,7 @@
 @push('js')
 <script>
 if (message = $('#notice-log').val()) {
-    flash(message)
+    jzf.flash(message)
 }
 
 </script>

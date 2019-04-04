@@ -10672,7 +10672,7 @@ main {
   height: calc(100% - 71px);
 }
 
-.nav-item > .nav-link {
+.navbar-laravel .nav-link {
   padding: 0;
 }
 

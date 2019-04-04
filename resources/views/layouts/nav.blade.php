@@ -21,7 +21,7 @@
             @else
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    <img src="/img/75.svg" width="44px" class="rounded-circle mr-1">
+                    <img src="/img/{{ Auth::user()->avatar }}" width="44px" class="rounded-circle mr-1">
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

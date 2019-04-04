@@ -33,7 +33,7 @@
 @endsection
 @push('js')
 <script>
-showErrors()
+jzf.showErrors()
 
 </script>
 @endpush('js')

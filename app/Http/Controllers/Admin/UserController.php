@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
-use App\Exports\UsersExport;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -14,6 +12,11 @@ class UserController extends Controller
     {
         $users = User::orderBy('id', 'desc')->paginate(10);
         return view('user.index', compact('users'));
+    }
+
+    public function show(User $user)
+    {
+        return $user;
     }
 
     public function edit(User $user)
@@ -54,11 +57,6 @@ class UserController extends Controller
         }
     }
 
-    public function export() 
-    {
-        return \Excel::download(new UsersExport, 'users.xlsx');
-    }
-
     protected function checkInput($rule = [])
     {
         $rule = array_merge([
@@ -70,4 +68,5 @@ class UserController extends Controller
 
         return $this->validate(request(), $rule);
     }
+
 }
