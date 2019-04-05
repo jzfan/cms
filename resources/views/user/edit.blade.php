@@ -3,8 +3,8 @@
 <div class="card">
     <div class="card-header"><i class="iconfont icon-edit"></i>编辑用户</div>
     <div class="card-body">
-        <form action='/admin/users/{{ $user->id }}' method="POST">
-            {{ csrf_field() }}
+        <form action='/admin/users/{{ $user->id }}' method="POST" class="show-errors">
+            @csrf
             @method('put')
             <div class="form-group">
                 <label><i class="iconfont icon-user"></i>用户名</label>
@@ -31,9 +31,3 @@
     </div>
 </div>
 @endsection
-@push('js')
-<script>
-jzf.showErrors()
-
-</script>
-@endpush('js')

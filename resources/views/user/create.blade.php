@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-header"><i class="iconfont icon-plus"></i>新建用户</div>
     <div class="card-body">
-        <form action='/admin/users' method="POST">
+        <form action='/admin/users' method="POST" class="show-errors">
             @csrf
             <div class="form-group">
                 <label><i class="iconfont icon-user"></i>用户名</label>
@@ -30,9 +30,3 @@
 </div>
 <input type="hidden" id='errors' value='{{ $errors->toJson() }}'>
 @endsection
-@push('js')
-<script>
-jzf.showErrors()
-
-</script>
-@endpush

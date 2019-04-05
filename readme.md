@@ -13,7 +13,7 @@ php artisan migrate
 php db:seed
 ```
 
-## Auth
+## 登录
 
 ```
 url: /admin
@@ -21,18 +21,38 @@ email: admin@admin.com
 password: 123
 ```
 
+## 特性
+
+1. 通知
+```
+// php
+session('notice', 'some message');
+// js
+flash('some message')
+// ajax: 删除按钮, 添加 .btn-delete 样式
+<button type="button" class="btn btn-danger btn-delete">
+```
+2. form表单错误提示，添加 .show-errors 样式
+```
+<form action='/some/path' method="POST" class="show-errors">
+```
+3. Excel数据导出
+4. 数据库导出，带命令行运行，可配置计划任务
+
+## 插件
+1. Chartjs
+2. Pikaday
+3. WangEditor
+
+
 ## 界面
 
-![login](http://un-sv.com/img/github/login.png)
-![dashboard](http://un-sv.com/img/github/dashboard.png)
-![list](http://un-sv.com/img/github/list.png)
-![edit](http://un-sv.com/img/github/edit.png)
+![show](http://un-sv.com/img/github/all.gif)
 
 
 // ToDo
-3. search user
+1. DB export
 9. select2
-10. jwtoken
 11. 404, 500 page
 
 ## License

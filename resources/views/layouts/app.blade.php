@@ -50,11 +50,18 @@
         const nav = getNav()
         let tick = 0
         toggleActiveNav()
-        // console.log(nav)
-        $('.btn-delete').click(function(e) {
-            deleteTr($(e.target))
-            flash('删除操作成功')
-        })
+        if ($('form.show-errors').length > 0) {
+            showErrors()
+        }
+        if (message = $('#notice-div .notice-alert').html().trim()) {
+            flash(message)
+        }
+        if ($('.btn-delete').length > 0) {
+            $('.btn-delete').click(function(e) {
+                deleteTr($(e.target))
+                flash('删除操作成功')
+            })
+        }
 
         function getNav() {
             return window.location.pathname.split('/').slice(0, 3).join('/')
@@ -90,18 +97,17 @@
         }
 
         function flash(message) {
-            $('#notice-div').show()
-                .find('.alert').html(message)
             if (0 !== tick) {
                 clearTimeout(tick)
             }
+            $('#notice-div').show()
+                .find('.alert').html(message)
             tick = setTimeout(() => {
                 $('#notice-div').hide('slow')
             }, 3000)
         }
-        window['jzf'] = {}
-        window['jzf']['showErrors'] = showErrors
-        window['jzf']['flash'] = flash
+        // window['jzf'] = {}
+        // window['jzf']['flash'] = flash
     })()
 
     </script>
