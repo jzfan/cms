@@ -48,6 +48,7 @@
     (function() {
 
         const nav = getNav()
+        let tick = 0
         toggleActiveNav()
         // console.log(nav)
         $('.btn-delete').click(function(e) {
@@ -91,7 +92,10 @@
         function flash(message) {
             $('#notice-div').show()
                 .find('.alert').html(message)
-            setTimeout(() => {
+            if (0 !== tick) {
+                clearTimeout(tick)
+            }
+            tick = setTimeout(() => {
                 $('#notice-div').hide('slow')
             }, 3000)
         }
