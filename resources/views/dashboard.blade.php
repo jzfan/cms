@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
-    <div class="card-header"><i class="iconfont icon-linechart"></i>统计</div>
+    <div class="card-header"><i class="iconfont icon-calculator"></i>统计</div>
     <div class="card-body">
         <nav class="mb-2">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">

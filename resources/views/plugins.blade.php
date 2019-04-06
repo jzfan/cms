@@ -6,6 +6,14 @@
         <input type="text" class="form-control" id="datepicker" value="{{ date('Y-m-d') }}">
     </div>
 </div>
+<div class="card mt-4">
+    <div class="card-header"><i class="iconfont icon-edit-square"></i>WangEditor</div>
+    <div class="card-body">
+        <div id="editor">
+            <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+        </div>
+    </div>
+</div>
 @endsection
 @push('js')
 <!-- <script src="moment.js"></script>
@@ -25,6 +33,9 @@ var picker = new Pikaday({
         weekdaysShort: ['一', '二', '三', '四', '五', '六', '日'],
     }
 });
+
+var editor = new wangEditor('#editor')
+editor.create()
 
 </script>
 @endpush

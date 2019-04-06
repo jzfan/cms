@@ -37,7 +37,11 @@ flash('some message')
 <form action='/some/path' method="POST" class="show-errors">
 ```
 3. Excel数据导出
-4. 数据库导出，带命令行运行，可配置计划任务
+4. 数据库导出
+```
+//在 storage 目录下创建 backup 目录，确保可写
+pa db:backup
+```
 
 ## 插件
 1. Chartjs
@@ -51,7 +55,7 @@ flash('some message')
 
 
 // ToDo
-1. DB export
+1. Cors middleware
 9. select2
 11. 404, 500 page
 
