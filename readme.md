@@ -42,6 +42,8 @@ flash('some message')
 //在 storage 目录下创建 backup 目录，确保可写
 pa db:backup
 ```
+5. api跨域 CorsMiddleware 中间件
+
 
 ## 插件
 1. Chartjs
@@ -55,9 +57,8 @@ pa db:backup
 
 
 // ToDo
-1. Cors middleware
 9. select2
-11. 404, 500 page
+
 
 ## License
 
