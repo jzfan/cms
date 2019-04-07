@@ -61,7 +61,7 @@ class UserController extends Controller
     {
         $rule = array_merge([
             'name' => 'required|alphaDash|between:2, 10',
-            'role' => 'required|integer|min:0|max:9',
+            'role' => 'required|alphaDash|between:2, 20',
             'email' => 'required|email|unique:users',
             'password' => 'alphaDash|between:6, 255',
         ], $rule);

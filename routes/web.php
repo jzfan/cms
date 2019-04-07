@@ -19,7 +19,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/news', 'HomeController@news')->name('news');
 
-Route::middleware('auth')
+Route::middleware(['auth', 'admin'])
     ->namespace('Admin')
     ->prefix('admin')
     ->group(function () {

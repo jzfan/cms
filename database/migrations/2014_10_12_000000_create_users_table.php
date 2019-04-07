@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('avatar')->nullable();
-            $table->tinyInteger('role')->default(0);
+            $table->enum('role', ['user', 'admin'])->default('user');
+            $table->char('api_token', 100)->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

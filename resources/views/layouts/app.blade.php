@@ -16,7 +16,7 @@
 
 <body>
     <div id="app">
-        @auth
+        @admin
         @include('layouts.nav')
         @include('layouts.notice')
         <main>
@@ -40,10 +40,11 @@
                 @yield('content')
             </div>
         </main>
-        @endauth
+        @endadmin
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @admin
     <script>
     (function() {
 
@@ -111,6 +112,7 @@
     })()
 
     </script>
+    @endadmin
     @stack('js')
 </body>
 

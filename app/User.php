@@ -10,8 +10,8 @@ class User extends Authenticatable
     use Notifiable;
 
     const ROLES = [
-        0 => '用户',
-        9 => '管理员',
+        'user' => '用户',
+        'admin' => '管理员',
     ];
 
     /**
@@ -50,5 +50,10 @@ class User extends Authenticatable
     {
 
         return $value ?? 'default.png';
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === '管理员';
     }
 }
