@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'avatar',
+        'name', 'email', 'password', 'role', 'avatar', 'api_token'
     ];
 
     /**
@@ -55,5 +55,11 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role === '管理员';
+    }
+
+    public function freshToken()
+    {
+        $this->update(['api_token' => \Str::random(100)]);
+        return $this;
     }
 }
