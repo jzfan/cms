@@ -11,14 +11,15 @@ class LoginTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function get_token_and_user_info_by_login()
+    public function get_fresh_token_and_user_info_by_login()
     {
-        // $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $user = factory(User::class)->create([
             'name' => 'jhon doe',
             'email' => 'jhon@example.com',
             'password' => password_hash('123456', PASSWORD_DEFAULT),
+            'api_token' => '12345'
         ]);
 
         $response = $this->json('post', '/api/login', [
@@ -27,9 +28,10 @@ class LoginTest extends TestCase
         ])->assertOk();
 
         $token = $user->fresh()->api_token;
-
+        $this->assertNotEquals('12345', $token);
+        
         $arr = $response->assertHeader('Authorization', "Bearer {$token}")->json();
-        $this->assertEquals(100, strlen($token));
+        $this->assertEquals(config('token.length') + 10, strlen($token));
         $this->assertEquals('jhon doe', $arr['name']);
         $this->assertEquals('jhon@example.com', $arr['email']);
     }

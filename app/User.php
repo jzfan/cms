@@ -29,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'api_token'
     ];
 
     /**
@@ -59,7 +59,7 @@ class User extends Authenticatable
 
     public function freshToken()
     {
-        $this->update(['api_token' => \Str::random(100)]);
-        return $this;
+        $this->update(['api_token' => \Str::random(config('token.length')) . time()]);
+        return $this->api_token;
     }
 }

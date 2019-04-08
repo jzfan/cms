@@ -30,7 +30,7 @@ class AdminMiddlewareTest extends TestCase
     /** @test */
     public function user_can_not_login_dashboard()
     {
-        $this->withoutExceptionHandling();
+        // $this->withoutExceptionHandling();
         $user = factory(User::class)->create([
             'email' => 'jhon@example.com',
             'password' => password_hash('123456', PASSWORD_DEFAULT),

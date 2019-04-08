@@ -26,13 +26,13 @@ class ChartController extends Controller
     private function registeredIn30Days()
     {
         $begin = date('Y-m-d', strtotime('-29 days'));
-        $arr = User::where('created_at', '>', $begin)
-            ->select(['created_at'])
-            ->pluck('created_at')
-            ->map(function ($str) {
-                return substr($str, 0, 10);
-            })->all();
 
-        return array_count_values($arr);
+        $days = User::where('created_at', '>', $begin)
+                        ->pluck('created_at')
+                        ->map(function ($dt) {
+                            return $dt->format('Y-m-d');
+                        })->all();
+        return array_count_values($days);
+
     }
 }

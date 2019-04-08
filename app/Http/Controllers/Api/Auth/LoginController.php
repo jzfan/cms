@@ -19,10 +19,10 @@ class LoginController extends Controller
 	{
 	    $this->clearLoginAttempts($request);
 
-	    $user = auth()->user()->freshToken();
+	    $token = auth()->user()->freshToken();
 
-	    return response()->json($user, 200, [
-	    	'Authorization' => "Bearer {$user->api_token}"
+	    return response()->json(auth()->user(), 200, [
+	    	'Authorization' => "Bearer {$token}"
 	    ]);
 	}
 }

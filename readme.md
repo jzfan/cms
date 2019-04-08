@@ -4,11 +4,15 @@
 
 ## 安装
 
+需要安装redis 及 phpredis扩展
+
 ```
 git clone https://github.com/jzfan/admin.git
 cd admin
 composer install
+
 //配置数据库...
+
 php artisan migrate
 php db:seed
 ```
@@ -32,20 +36,25 @@ flash('some message')
 // ajax: 删除按钮, 添加 .btn-delete 样式
 <button type="button" class="btn btn-danger btn-delete">
 ```
+
 2. form表单错误提示，添加 .show-errors 样式
 ```
 <form action='/some/path' method="POST" class="show-errors">
 ```
+
 3. Excel数据导出
+
 4. 数据库导出
 ```
 //在 storage 目录下创建 backup 目录，确保可写
-pa db:backup
+php artisan db:backup
 ```
+
 5. api跨域 CorsMiddleware 中间件
 
 
 ## 插件
+
 1. Chartjs
 2. Pikaday
 3. WangEditor
@@ -54,10 +63,6 @@ pa db:backup
 ## 界面
 
 ![show](http://un-sv.com/img/github/all.gif)
-
-
-// ToDo
-9. select2
 
 
 ## License
