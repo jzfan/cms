@@ -102,7 +102,7 @@
                 clearTimeout(tick)
             }
             $('#notice-div').show()
-                .find('.alert').html(message)
+                .find('.alert').html(`<i class="iconfont icon-check"></i>${message}`)
             tick = setTimeout(() => {
                 $('#notice-div').hide('slow')
             }, 3000)
