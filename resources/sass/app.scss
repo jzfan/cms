@@ -15,20 +15,13 @@
 @import '/css/pikaday.css';
 @import '/css/iconfont.css';
 
-html,
-body,
-#app,
-main>.container-fluid,
-main>.container-fluid>.row {
-    height: 100%;
-}
-
-main {
-    height: calc(100% - 71px);
-}
 
 .navbar-laravel .nav-link {
     padding: 0
+}
+
+#menu-nav {
+	height: 88vh;
 }
 
 .iconfont {
@@ -37,4 +30,16 @@ main {
 
 .btn-sm>.iconfont {
     margin-right: 0;
+}
+
+.chart-md {
+    position: relative;
+    height: 30vh;
+    width: 76vw;
+}
+
+@media screen and (max-width: 990px) {
+    .chart-md {
+        width: 92vw;
+    }
 }

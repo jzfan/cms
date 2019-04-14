@@ -10660,20 +10660,12 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-html,
-body,
-#app,
-main > .container-fluid,
-main > .container-fluid > .row {
-  height: 100%;
-}
-
-main {
-  height: calc(100% - 71px);
-}
-
 .navbar-laravel .nav-link {
   padding: 0;
+}
+
+#menu-nav {
+  height: 90vh;
 }
 
 .iconfont {

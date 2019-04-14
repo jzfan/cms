@@ -11,12 +11,12 @@
         </nav>
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div class="chart-container" style="position: relative; height:30vh; width:75vw">
+                <div class="chart-container chart-md">
                     <canvas id="chart-line"></canvas>
                 </div>
             </div>
             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div class="chart-container" style="position: relative; height:30vh; width:75vw">
+                <div class="chart-container chart-md">
                     <canvas id="chart-bar"></canvas>
                 </div>
             </div>
