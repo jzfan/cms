@@ -28,9 +28,9 @@ class DatabaseSeeder extends Seeder
 
         $remarks = factory(Remark::class, 5)->create();
 
-        $categories = factory(Category::class, 5)->create();        
+        $categories = factory(Category::class, 7)->create();        
         foreach ($categories as $category) {
-            factory(Food::class, rand(2, 10))->create(['category_id' => $category->id]);
+            factory(Food::class, rand(5, 22))->create(['category_id' => $category->id]);
         }
 
         $foods = Food::all();

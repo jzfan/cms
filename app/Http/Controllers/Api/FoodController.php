@@ -9,9 +9,16 @@ class FoodController extends Controller
 {
     public function index()
     {
-        return Food::where('category_id', request('cid'))->firstOrFail([
-            'id', 'price', 'tax_rate', 'name', 'category_id'
-        ]);
+        $foods = Food::where('category_id', '>=', request('cid'))->select([
+            'id', 'price', 'tax_rate', 'name', 'abbr', 'category_id'
+        ])->orderBy('category_id')->limit(24)->get();
+        if ($foods->count() === 24) {
+           return $foods;
+        }
+        $append = Food::select([
+            'id', 'price', 'tax_rate', 'name', 'abbr', 'category_id'
+        ])->orderBy('category_id')->limit(24-$foods->count())->get();
+        return $foods->merge($append);
     }
 
     /**
