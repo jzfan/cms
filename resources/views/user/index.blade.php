@@ -2,14 +2,14 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <i class="iconfont icon-unorderedlist"></i>用户列表
+        <i class="iconfont icon-unorderedlist"></i>Users list
         <button type="button" class="btn btn-outline-secondary btn-sm float-right" onclick='window.location="/admin/users/create"'>
             <i class="iconfont icon-plus"></i>
-            新增
+            create
         </button>
         <button type="button" class="btn btn-outline-secondary btn-sm float-right mr-2" onclick='window.location="/admin/export/users"'>
             <i class="iconfont icon-file-excel"></i>
-            导出
+            export
         </button>
     </div>
     <div class="card-body">
@@ -17,11 +17,11 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">用户</th>
-                    <th scope="col">角色</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Email</th>
-                    <th scope="col">创建于</th>
-                    <th scope="col">操作</th>
+                    <th scope="col">created_at</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +34,8 @@
                     <td>{{ $user->created_at->diffForHumans() }}</td>
                     <td>
                         <button type="button" class="btn btn-sm btn-outline-primary" onclick='window.location="/admin/users/{{ $user->id }}/edit"'>
-                            <i class="iconfont icon-edit"></i>编辑</button>
-                        <button type="button" class="btn btn-sm btn-outline-danger btn-delete"><i class="iconfont icon-delete"></i>删除</button>
+                            <i class="iconfont icon-edit"></i>Edit</button>
+                        <button type="button" class="btn btn-sm btn-outline-danger btn-delete"><i class="iconfont icon-delete"></i>Delete</button>
                     </td>
                 </tr>
                 @endforeach

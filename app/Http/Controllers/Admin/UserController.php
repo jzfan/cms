@@ -33,7 +33,7 @@ class UserController extends Controller
     {
         $data = $this->checkInput();
         User::create($data);
-        session()->flash('notice', "新建操作成功");
+        session()->flash('notice', "created successfully");
         return redirect()->route('users.index');
     }
 
@@ -46,7 +46,7 @@ class UserController extends Controller
                 Rule::unique('users')->ignore($user->id),
             ],
         ]);
-        $user->update($data) && session()->flash('notice', "更新操作成功");
+        $user->update($data) && session()->flash('notice', "updated successfully");
         return redirect()->route('users.index');
     }
 

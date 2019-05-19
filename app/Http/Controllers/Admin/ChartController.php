@@ -2,37 +2,46 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
+use App\Order;
+use Carbon\Carbon;
+use App\Http\Controllers\Controller;
 
 class ChartController extends Controller
 {
-    public function users()
+    public function sold()
     {
-        $arr = array_merge($this->zeroList(), $this->registeredIn30Days());
-        ksort($arr);
-        return $arr;
+        return response()->json([
+            'this_week' => $this->thisWeekSold(),
+            'last_week' => $this->lastWeekSold(),
+        ]);
     }
 
-    private function zeroList()
+    protected function thisWeekSold()
     {
+        return $this->subWeekSold(0);
+    }
+
+    protected function lastWeekSold()
+    {
+        return $this->subWeekSold(1);
+    }
+
+    protected function subWeekSold($sub)
+    {
+        $dt = Carbon::now()->subWeeks($sub);
+        $orders = Order::whereDate('created_at', '>=', $dt->startOfWeek())
+                        ->whereDate('created_at', '<=', $dt->endOfWeek())
+                        ->pluck('total', 'created_at');
+        $orders = $orders->groupBy(function ($item, $key) {
+            return date('N', strtotime($key));
+        })->map(function ($order) {
+            return array_sum($order->toArray());
+        });
         $arr = [];
-        for ($i = 30; $i--;) {
-            $arr[date('Y-m-d', strtotime("-{$i} days"))] = 0;
+        foreach (range(1, 7) as $i) {
+            $arr[] = $orders[$i] ?? 0;
         }
         return $arr;
-    }
-
-    private function registeredIn30Days()
-    {
-        $begin = date('Y-m-d', strtotime('-29 days'));
-
-        $days = User::where('created_at', '>', $begin)
-                        ->pluck('created_at')
-                        ->map(function ($dt) {
-                            return $dt->format('Y-m-d');
-                        })->all();
-        return array_count_values($days);
-
     }
 }

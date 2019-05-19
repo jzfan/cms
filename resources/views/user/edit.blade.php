@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <div class="card">
-    <div class="card-header"><i class="iconfont icon-edit"></i>编辑用户</div>
+    <div class="card-header"><i class="iconfont icon-edit"></i>Edit User</div>
     <div class="card-body">
         <form action='/admin/users/{{ $user->id }}' method="POST" class="show-errors">
             @csrf
             @method('put')
             <div class="form-group">
-                <label><i class="iconfont icon-user"></i>用户名</label>
+                <label><i class="iconfont icon-user"></i>User Name</label>
                 <input type="text" class="form-control" name='name' value="{{ old('name', $user->name )}}">
             </div>
             <div class="form-group">
@@ -15,9 +15,9 @@
                 <input type="text" class="form-control" name='email' value="{{ old('email', $user->email )}}">
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-lock"></i>角色</label>
+                <label><i class="iconfont icon-lock"></i>Role</label>
                 <select class="form-control" name='role'>
-                    @foreach (\App\User::ROLES as $k => $v)
+                    @foreach (['user', 'admin'] as $k => $v)
                     <option value="{{ $k }}" @if ($v===$user->role)
                         selected
                         @endif

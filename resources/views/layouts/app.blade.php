@@ -60,7 +60,7 @@
         if ($('.btn-delete').length > 0) {
             $('.btn-delete').click(function(e) {
                 deleteTr($(e.target))
-                flash('删除操作成功')
+                flash('deleted successfuly')
             })
         }
 
@@ -85,15 +85,11 @@
         }
 
         function deleteTr(btn) {
-            if (confirm('确定删除？')) {
+            if (confirm('delete?')) {
                 let tr = btn.parents('tr')
-                let id = tr.data('id')
-                axios.delete(`/admin/users/${id}`)
-                    .then(res => {
-                        if (res.data === 'ok') {
-                            tr.hide('slow')
-                        }
-                    })
+                let url = tr.data('url')
+                axios.delete(url)
+                    .then(res => tr.hide('slow'))
             }
         }
 

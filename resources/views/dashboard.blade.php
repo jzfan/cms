@@ -1,76 +1,101 @@
 @extends('layouts.app')
 @section('content')
-<div class="card">
-    <div class="card-header"><i class="iconfont icon-calculator"></i>统计</div>
-    <div class="card-body">
-        <nav class="mb-2">
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><i class="iconfont icon-linechart"></i>线图</a>
-                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="iconfont icon-barchart"></i>柱图</a>
-            </div>
-        </nav>
-        <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                <div class="chart-container chart-md">
-                    <canvas id="chart-line"></canvas>
-                </div>
-            </div>
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div class="chart-container chart-md">
-                    <canvas id="chart-bar"></canvas>
-                </div>
-            </div>
+<div class="row mb-4 px-3">
+    <div class="card text-white bg-secondary col">
+        <div class="card-body">
+            <h5 class="card-title">Income Today</h5>
+            <h6 class="card-subtitle mb-2">{{ date('l dS \of F Y') }}</h6>
+            <p class="card-text">
+                <dl class="row">
+                    <dt class="col-3">Total</dt>
+                    <dd class="col-9 letter-space">$ {{ number_format($total, 2) }}</dd>
+                    <dt class="col-3">Income</dt>
+                    <dd class="col-9 letter-space">$ {{ number_format($total - $tax, 2) }}</dd>
+                    <dt class="col-3">Tax</dt>
+                    <dd class="col-9 letter-space">$ {{ number_format($tax, 2) }}</dd>
+                </dl>
+            </p>
         </div>
     </div>
+    <div class="card text-white bg-primary col">
+        <div class="card-body">
+            <h5 class="card-title">Orders Today</h5>
+            <h6 class="card-subtitle mb-2">{{ date('l dS \of F Y') }}</h6>
+            <p class="card-text">
+                <dl class="row">
+                    <dt class="col-3">Count</dt>
+                    <dd class="col-9 letter-space">{{ $orders_count }}</dd>
+                </dl>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="chart-container chart-md mb-4">
+    <canvas id="chart-line"></canvas>
 </div>
 @endsection
 @push('js')
 <script>
 var data = {
-    labels: [],
+    labels: ['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'],
     datasets: [{
-        label: "注册用户",
-        backgroundColor: "rgba(23,162,184,0.2)",
-        borderColor: "rgba(23,162,184,1)",
-        borderWidth: 2,
-        hoverBackgroundColor: "rgba(23,162,184,0.4)",
-        hoverBorderColor: "rgba(23,162,184,1)",
-        data: [],
-    }]
+            label: "This Week",
+            backgroundColor: "rgba(23,162,184,0.2)",
+            borderColor: "rgba(23,162,184,1)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(23,162,184,0.4)",
+            hoverBorderColor: "rgba(23,162,184,1)",
+            // data: []
+        },
+        {
+            label: "Last Week",
+            backgroundColor: "rgba(220,220,220,0.5)",
+            borderColor: "rgba(220,220,220,0.8)",
+            borderWidth: 2,
+            hoverBackgroundColor: "rgba(220,220,220,0.75)",
+            hoverBorderColor: "rgba(220,220,220,1)",
+            // data: [28, 48, 40, 19, 86, 27, 90]
+        }
+    ]
 };
 
 var options = {
-    maintainAspectRatio: false,
-    scales: {
-        yAxes: [{
-            stacked: true,
-            gridLines: {
-                display: true,
-                color: "rgba(23,162,184,0.2)"
-            }
-        }],
-        xAxes: [{
-            gridLines: {
-                display: false
-            }
-        }]
-    }
+    scaleBeginAtZero: true,
+
+    //Boolean - Whether grid lines are shown across the chart
+    scaleShowGridLines: true,
+
+    //String - Colour of the grid lines
+    // scaleGridLineColor : "rgba(0,0,0,.05)",
+
+    //Number - Width of the grid lines
+    scaleGridLineWidth: 1,
+
+    //Boolean - Whether to show horizontal lines (except X axis)
+    scaleShowHorizontalLines: true,
+
+    //Boolean - Whether to show vertical lines (except Y axis)
+    scaleShowVerticalLines: true,
+
+    //Boolean - If there is a stroke on each bar
+    barShowStroke: true,
+
+    //Number - Pixel width of the bar stroke
+    barStrokeWidth: 2,
+
+    //Number - Spacing between each of the X value sets
+    barValueSpacing: 5,
+
+    //Number - Spacing between data sets within X values
+    barDatasetSpacing: 1,
 };
-
-axios.get('/admin/chart/users')
+axios.get('/admin/chart/sold')
     .then(res => {
-        for (let i in res.data) {
-            data.labels.push(i.slice(5))
-            data.datasets[0].data.push(res.data[i])
-        }
-        // data.datasets[0].data = res.data
+        console.log(res.data)
+        data.datasets[0].data = res.data.this_week
+        data.datasets[1].data = res.data.last_week
 
-        Chart.Bar('chart-bar', {
-            options: options,
-            data: data
-        });
-
-        Chart.Line('chart-line', {
+        Chart.Bar('chart-line', {
             data: data,
             options: options
         });

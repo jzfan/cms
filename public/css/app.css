@@ -10665,7 +10665,7 @@ a.text-dark:focus {
 }
 
 #menu-nav {
-  height: 90vh;
+  height: 88vh;
 }
 
 .iconfont {
@@ -10675,5 +10675,15 @@ a.text-dark:focus {
 .btn-sm > .iconfont,
 .btn-group-sm > .btn > .iconfont {
   margin-right: 0;
+}
+
+.letter-space {
+  letter-spacing: 0.25rem;
+}
+
+@media screen and (max-width: 990px) {
+  .chart-md {
+    width: 92vw;
+  }
 }
 

@@ -9,11 +9,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    const ROLES = [
-        'user' => '用户',
-        'admin' => '管理员',
-    ];
-
     /**
      * The attributes that are mass assignable.
      *
@@ -41,11 +36,6 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getRoleAttribute($value)
-    {
-        return self::ROLES[$value] ?? '未知';
-    }
-
     public function getAvatarAttribute($value)
     {
 
@@ -54,7 +44,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-        return $this->role === '管理员';
+        return $this->role === 'admin';
     }
 
     public function freshToken()

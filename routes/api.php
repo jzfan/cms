@@ -24,4 +24,7 @@ Route::namespace('Api')->group(function () {
 	    return $request->user();
 	});
 
+	Route::get('categories', 'CategoryController@index');
+	Route::get('foods', 'FoodController@index');
+
 });

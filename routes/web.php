@@ -26,7 +26,11 @@ Route::middleware(['auth', 'admin'])
         Route::get('/', 'DashboardController@index');
         Route::get('plugins', 'DashboardController@plugins');
         Route::get('chart/users', 'ChartController@users');
+        Route::get('chart/sold', 'ChartController@sold');
         Route::get('export/users', 'ExportController@users');
         Route::resource('users', 'UserController');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('foods', 'FoodController');
+        Route::get('orders', 'OrderController@index');
 
     });

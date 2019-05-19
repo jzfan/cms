@@ -8,10 +8,10 @@
 <script>
 $('.breadcrumb-item').removeClass('active')
 if (nav === '/admin') {
-    $('.breadcrumb-item:first').addClass('active').html(`首页`)
+    $('.breadcrumb-item:first').addClass('active').html(`Index`)
         .next().hide()
 } else {
-    $('.breadcrumb-item:first').html(`<a href='/admin'>首页</a>`)
+    $('.breadcrumb-item:first').html(`<a href='/admin'>Index</a>`)
         .next().html(getNavText()).addClass('active').show()
 }
 

@@ -31,11 +31,8 @@
 .btn-sm>.iconfont {
     margin-right: 0;
 }
-
-.chart-md {
-    position: relative;
-    height: 30vh;
-    width: 76vw;
+.letter-space {
+    letter-spacing: .25rem;
 }
 
 @media screen and (max-width: 990px) {
@@ -43,3 +40,4 @@
         width: 92vw;
     }
 }
+
