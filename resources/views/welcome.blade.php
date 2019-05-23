@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <title>JzAdmin</title>
+    <title>{{ config('app.name') }}</title>
     <style>
     html,
     body {
@@ -79,7 +79,7 @@
         @endif
         <div class="content">
             <div class="title m-b-md text-primary">
-                <span class="text-primary">JzAdmin</span>
+                <span class="text-primary">{{ config('app.name') }}</span>
             </div>
             <div id="aplayer"></div>
             <div class="links">
