@@ -2,8 +2,10 @@
 @section('content')
 <div class="card">
     <div class="card-header">
-        <i class="iconfont icon-unorderedlist"></i>Foods list
-        <button type="button" class="btn btn-outline-secondary btn-sm float-right" onclick='window.location="/admin/foods/create"'>
+        <i class="iconfont icon-unorderedlist"></i>
+        <span class="p-2" style='{{ \App\Color::style($category->color) }}''>Foods of {{ ucfirst($category->name) }}
+        </span>
+        <button type="button" class="btn btn-outline-secondary btn-sm float-right" onclick='window.location="/admin/foods/create?cid={{ $category->id }}"'>
             <i class="iconfont icon-plus"></i>
             create
         </button>
@@ -15,9 +17,9 @@
                     <th scope="col">ID</th>
                     <th scope="col">Abbr</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Category</th>
                     <th scope="col">Price</th>
                     <th scope="col">Tax Rate</th>
+                    <th scope="col">sort</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -27,9 +29,9 @@
                     <th scope="row">{{ $food->id }}</th>
                     <td>{{ $food->abbr }}</td>
                     <td>{{ $food->name }}</td>
-                    <td>{{ optional($food->category)->name }}</td>
                     <td>{{ $food->price }}</td>
                     <td>{{ $food->tax_rate }} @if ($food->tax_rate) % @endif</td>
+                    <td>{{ $food->sort }}</td>
                     <td>
                         <button type="button" class="btn btn-sm btn-outline-primary" onclick='window.location="/admin/foods/{{ $food->id }}/edit"'>
                             <i class="iconfont icon-edit"></i>Edit</button>

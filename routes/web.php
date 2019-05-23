@@ -31,6 +31,8 @@ Route::middleware(['auth', 'admin'])
         Route::resource('users', 'UserController');
         Route::resource('categories', 'CategoryController');
         Route::resource('foods', 'FoodController');
+        Route::resource('actions', 'ActionController');
+        Route::get('category/{cid}/foods', 'FoodController@byCid');
         Route::get('orders', 'OrderController@index');
 
     });

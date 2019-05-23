@@ -18,6 +18,7 @@ class CreateFoodsTable extends Migration
             $table->unsignedInteger('category_id');
             $table->string('abbr');
             $table->string('name');
+            $table->unsignedInteger('sort');
             $table->unsignedTinyInteger('tax_rate');
             $table->unsignedDecimal('price', 8, 2);
             $table->timestamps();

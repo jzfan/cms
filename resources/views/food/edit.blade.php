@@ -27,11 +27,15 @@
             </div>
             <div class="form-group">
                 <label><i class="iconfont icon-food"></i>Price</label>
-                <input type="number" class="form-control" name='price' value="{{ old('price', $food->price )}}">
+                <input type="number" step="0.01" class="form-control" name='price' value="{{ old('price', $food->price )}}">
+            </div>
+            <div class="form-group">
+                <label><i class="iconfont icon-food"></i>Sort</label>
+                <input type="number" class="form-control" name='sort' value="{{ old('sort', $food->sort )}}">
             </div>
             <div class="form-group">
                 <label><i class="iconfont icon-food"></i>Tax Rate(%)</label>
-                <input type="number" class="form-control" name='tax_rate' value="{{ old('tax_rate', $food->tax_rate )}}">
+                <input type="number" step="0.01" class="form-control" name='tax_rate' value="{{ old('tax_rate', $food->tax_rate )}}">
             </div>
             @include('layouts.submit-button')
         </form>

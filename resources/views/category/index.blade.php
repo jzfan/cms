@@ -16,6 +16,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Job</th>
                     <th scope="col">Color</th>
+                    <th scope="col">Sort</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -25,7 +26,9 @@
                     <th scope="row">{{ $category->id }}</th>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->job }}</td>
-                    <td><span class="p-2" style='{{ \App\Color::style($category->color) }}''>{{ $category->color }}</span></td>
+                    <td><span class="p-2" style='{{ \App\Color::style($category->color) }}''>{{ $category->color }}</span>
+                    </td>
+                    <td>{{ $category->sort }}</td>
                     <td>
                         <button type="button" class="btn btn-sm btn-outline-primary" onclick='window.location="/admin/categories/{{ $category->id }}/edit"'>
                             <i class="iconfont icon-edit"></i>Edit</button>

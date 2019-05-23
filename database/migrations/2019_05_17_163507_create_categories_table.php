@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('color');
+            $table->unsignedInteger('sort');
             $table->enum('job', ['bar', 'kitchen']);
             $table->timestamps();
         });

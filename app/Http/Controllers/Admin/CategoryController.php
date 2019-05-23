@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Category;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-    	$categories = Category::all();
+    	$categories = Category::orderBy('sort')->get();
     	return view('category.index', compact('categories'));
     }
 
@@ -23,10 +22,11 @@ class CategoryController extends Controller
     {
     	$data = request()->validate([
     		'name' => 'required',
-    		'color' => 'required'
+    		'color' => 'required',
+            'sort' => 'required|gt:0',
     	]);
     	$category->update($data);
-    	return $this->index();
+    	return redirect('/admin/categories');
     }
 
     public function destroy(Category $category)
@@ -47,6 +47,7 @@ class CategoryController extends Controller
     		'name' => 'required',
     		'color' => 'required',
     		'job' => 'required',
+            'sort' => 'required|gt:0',
     	]);
     	Category::create($data);
     	return $this->index();

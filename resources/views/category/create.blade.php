@@ -33,6 +33,10 @@
                     @endforeach
                 </select>
             </div>
+            <div class="form-group">
+                <label><i class="iconfont icon-user"></i>Sort</label>
+                <input type="number" class="form-control" name='sort' value="{{ old('sort')}}" required>
+            </div>
             @include('layouts.submit-button')
         </form>
     </div>
