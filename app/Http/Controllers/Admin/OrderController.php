@@ -9,8 +9,9 @@ class OrderController extends Controller
 {
     public function index()
     {
-    	$order = Order::first();
-    	$orders = Order::orderBy('id', 'desc')->paginate();
+    	$orders = request()->has('day') 
+    			? Order::searchByDay('today')->paginate()
+    			: Order::orderBy('created_at', 'desc')->paginate();
     	return view('order.index', compact('orders'));
     }
 }

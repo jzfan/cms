@@ -26,7 +26,7 @@
                     <th scope="row">{{ $category->id }}</th>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->job }}</td>
-                    <td><span class="p-2" style='{{ \App\Color::style($category->color) }}''>{{ $category->color }}</span>
+                    <td><span class="p-2" style='{{ \App\Color::style($category->color) }}'>{{ $category->color }}</span>
                     </td>
                     <td>{{ $category->sort }}</td>
                     <td>

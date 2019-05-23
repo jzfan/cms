@@ -5,10 +5,10 @@
 @foreach ($categories as $category)
 <div class="section col-4 mb-4">
     <div class="card">
-      <div class="card-body">
+      <div class="card-body" style='{{ \App\Color::style($category->color) }}'>
         <h5 class="card-title">{{ ucfirst($category->name) }}</h5>
         <p class="card-text">with {{ $category->foods_count }} kind of foods</p>
-        <a href="/admin/category/{{ $category->id }}/foods" class="btn" style='{{ \App\Color::style($category->color) }}''>Enter</a>
+        <a href="/admin/category/{{ $category->id }}/foods" class="btn btn-light">Enter</a>
       </div>
     </div>
 </div>

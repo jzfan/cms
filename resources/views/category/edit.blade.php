@@ -7,7 +7,7 @@
             @csrf
             @method('put')
             <div class="form-group">
-                <label><i class="iconfont icon-category"></i>category Name</label>
+                <label></i>category Name</label>
                 <input type="text" class="form-control" name='name' value="{{ old('name', $category->name )}}">
             </div>
             <div class="form-group">
@@ -23,7 +23,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-lock"></i>Color</label>
+                <label>Color</label>
                 <select class="form-control" name='color'>
                     @foreach (array_keys(config('color')) as $v)
                     <option value="{{ $v }}" @if ($v===$category->color)
@@ -34,7 +34,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-user"></i>Sort</label>
+                <label>Sort</label>
                 <input type="number" class="form-control" name='sort' value="{{ old('sort', $category->sort)}}" required>
             </div>
             @include('layouts.submit-button')

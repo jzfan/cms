@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-header">
         <i class="iconfont icon-unorderedlist"></i>
-        <span class="p-2" style='{{ \App\Color::style($category->color) }}''>Foods of {{ ucfirst($category->name) }}
+        <span class="p-2" style='{{ \App\Color::style($category->color) }}'>Foods of {{ ucfirst($category->name) }}
         </span>
         <button type="button" class="btn btn-outline-secondary btn-sm float-right" onclick='window.location="/admin/foods/create?cid={{ $category->id }}"'>
             <i class="iconfont icon-plus"></i>

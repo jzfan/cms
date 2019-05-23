@@ -26,6 +26,7 @@ class CategoryController extends Controller
             'sort' => 'required|gt:0',
     	]);
     	$category->update($data);
+        session()->flash('notice', "updated successfully");
     	return redirect('/admin/categories');
     }
 

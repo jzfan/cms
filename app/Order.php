@@ -12,10 +12,22 @@ class Order extends Model
     	'remarks' => 'array'
     ];
 
-    // public function details()
-    // {
-    // 	return collect($this->items)->map(function ($item) {
-    // 		return $item['abbr'] . ' : ' . $item['price'] . ' x ' . $item['qty'] . ' = ' . $item['subtotal'];
-    // 	});
-    // }
+    public static function searchByDay()
+    {
+        $time = self::getTime(request('day'));
+        // dd(date('y-m-d'), $time);
+        return self::where('created_at', 'like', date('Y-m-d', $time) . '%')
+                    ->orderBy('created_at', 'desc');
+    }
+
+    protected static function getTime($day)
+    {
+        if ($day === 'yestoday') {
+            return strtotime('-1 day');
+        }
+        if ($day === 'lastweek') {
+            return strtotime('-1 week');
+        }
+        return strtotime($day);
+    }
 }

@@ -7,15 +7,15 @@
             @csrf
             @method('put')
             <div class="form-group">
-                <label><i class="iconfont icon-food"></i>Abbr</label>
+                <label></i>Abbr</label>
                 <input type="text" class="form-control" name='abbr' value="{{ old('abbr', $food->abbr)}}">
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-food"></i>Name</label>
+                <label></i>Name</label>
                 <input type="text" class="form-control" name='name' value="{{ old('name', $food->name )}}">
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-lock"></i>Category</label>
+                <label></i>Category</label>
                 <select class="form-control" name='category_id'>
                     @foreach (\App\Category::all() as $category)
                     <option value="{{ $category->id }}" @if ($category->id===$food->category_id)
@@ -26,15 +26,15 @@
                 </select>
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-food"></i>Price</label>
+                <label></i>Price</label>
                 <input type="number" step="0.01" class="form-control" name='price' value="{{ old('price', $food->price )}}">
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-food"></i>Sort</label>
+                <label></i>Sort</label>
                 <input type="number" class="form-control" name='sort' value="{{ old('sort', $food->sort )}}">
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-food"></i>Tax Rate(%)</label>
+                <label></i>Tax Rate(%)</label>
                 <input type="number" step="0.01" class="form-control" name='tax_rate' value="{{ old('tax_rate', $food->tax_rate )}}">
             </div>
             @include('layouts.submit-button')

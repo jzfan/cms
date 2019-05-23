@@ -6,7 +6,7 @@
         <form action='/admin/categories' method="POST" class="show-errors">
             @csrf
             <div class="form-group">
-                <label><i class="iconfont icon-user"></i>Name</label>
+                <label>Name</label>
                 <input type="text" class="form-control" name='name' value="{{ old('name')}}" required>
             </div>
             <div class="form-group">
@@ -34,7 +34,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label><i class="iconfont icon-user"></i>Sort</label>
+                <label>Sort</label>
                 <input type="number" class="form-control" name='sort' value="{{ old('sort')}}" required>
             </div>
             @include('layouts.submit-button')
