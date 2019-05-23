@@ -36,11 +36,11 @@ class ChartController extends Controller
         $orders = $orders->groupBy(function ($item, $key) {
             return date('N', strtotime($key));
         })->map(function ($order) {
-            return array_sum($order->toArray());
+            return (string)array_sum($order->toArray());
         });
         $arr = [];
         foreach (range(1, 7) as $i) {
-            $arr[] = $orders[$i] ?? 0;
+            $arr[] = $orders[$i] ?? '0';
         }
         return $arr;
     }

@@ -26,9 +26,9 @@
                     <th scope="row">{{ $category->id }}</th>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->job }}</td>
-                    <td><span class="p-2" style='{{ \App\Color::style($category->color) }}'>{{ $category->color }}</span>
+                    <td><p class="py-2 text-center" style='{{ \App\Color::style($category->color) }}'>{{ $category->color }}</p>
                     </td>
-                    <td>{{ $category->sort }}</td>
+                    <td style="text-indent: 10px">{{ $category->sort }}</td>
                     <td>
                         <button type="button" class="btn btn-sm btn-outline-primary" onclick='window.location="/admin/categories/{{ $category->id }}/edit"'>
                             <i class="iconfont icon-edit"></i>Edit</button>

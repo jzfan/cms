@@ -59,8 +59,9 @@
         }
         if ($('.btn-delete').length > 0) {
             $('.btn-delete').click(function(e) {
-                deleteTr($(e.target))
-                flash('deleted successfuly')
+                deleteTr($(e.target), ()=> {
+                    flash('deleted successfuly')
+                })
             })
         }
 
@@ -84,12 +85,15 @@
             }
         }
 
-        function deleteTr(btn) {
+        function deleteTr(btn, cb) {
             if (confirm('delete?')) {
                 let tr = btn.parents('tr')
                 let url = tr.data('url')
                 axios.delete(url)
-                    .then(res => tr.hide('slow'))
+                    .then(res => {
+                        tr.hide('slow')
+                        cb()
+                    })
             }
         }
 

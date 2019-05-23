@@ -14,4 +14,9 @@ class OrderController extends Controller
     			: Order::orderBy('created_at', 'desc')->paginate();
     	return view('order.index', compact('orders'));
     }
+
+    public function destroy(Order $order)
+    {
+    	$order->delete();
+    }
 }

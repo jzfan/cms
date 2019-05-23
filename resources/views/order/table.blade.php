@@ -17,11 +17,11 @@
                                 <span class="col-3">
                                     subtotal
                                 </span>
-                                
                         </div>
                     </th>
                     <th scope="col">Total</th>
                     <th scope="col">Time</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,6 +50,9 @@
                     </td>
                     <td>$ {{ $order->total }}</td>
                     <td>{{ $order->created_at->diffForHumans() }}</td>
+                    <td>
+                        <button type="button" class="btn btn-sm btn-outline-danger btn-delete"><i class="iconfont icon-delete"></i>Delete</button>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
