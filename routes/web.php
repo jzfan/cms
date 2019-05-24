@@ -4,7 +4,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false, 'reset' => false]);
 
 Route::get('/news', 'HomeController@news')->name('news');
 
@@ -24,5 +24,7 @@ Route::middleware(['auth', 'admin'])
         Route::get('category/{cid}/foods', 'FoodController@byCid');
         Route::get('orders', 'OrderController@index');
         Route::delete('orders/{order}', 'OrderController@destroy');
+        Route::get('info', 'AdminController@show');
+        Route::post('info', 'AdminController@update');
 
     });

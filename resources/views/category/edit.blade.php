@@ -7,7 +7,7 @@
             @csrf
             @method('put')
             <div class="form-group">
-                <label></i>category Name</label>
+                <label>Category Name</label>
                 <input type="text" class="form-control" name='name' value="{{ old('name', $category->name )}}">
             </div>
             <div class="form-group">
