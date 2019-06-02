@@ -37,7 +37,7 @@ class OrderSeeder extends Seeder
                 'total' => array_sum(array_column($items, 'subtotal')),
                 'tax' => array_sum(array_column($items, 'tax')),
                 'remarks' => $remarks->random(rand(1, 3)),
-                'created_at' => Carbon::now()->subDays(rand(0, 10))->subMinutes(rand(1, 120))
+                'created_at' => Carbon::now()->subDays(0)->subMinutes(rand(1, 600))
             ]);
         }
     }
