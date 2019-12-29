@@ -46,71 +46,70 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @admin
     <script>
-    (function() {
+        (function() {
 
-        const nav = getNav()
-        let tick = 0
-        toggleActiveNav()
-        if ($('form.show-errors').length > 0) {
-            showErrors()
-        }
-        if (message = $('#notice-div .notice-alert').html().trim()) {
-            flash(message)
-        }
-        if ($('.btn-delete').length > 0) {
-            $('.btn-delete').click(function(e) {
-                deleteTr($(e.target))
-                flash('删除操作成功')
-            })
-        }
+            const nav = getNav()
+            let tick = 0
+            toggleActiveNav()
+            if ($('form.show-errors').length > 0) {
+                showErrors()
+            }
+            if (message = $('#notice-div .notice-alert').html().trim()) {
+                flash(message)
+            }
+            if ($('.btn-delete').length > 0) {
+                $('.btn-delete').click(function(e) {
+                    deleteTr($(e.target))
+                    flash('删除操作成功')
+                })
+            }
 
-        function getNav() {
-            return window.location.pathname.split('/').slice(0, 3).join('/')
-        }
+            function getNav() {
+                return window.location.pathname.split('/').slice(0, 3).join('/')
+            }
 
-        function toggleActiveNav() {
-            $('nav > .nav-link').removeClass('active')
-            $(`nav > .nav-link[href='${nav}']`).addClass('active')
+            function toggleActiveNav() {
+                $('nav > .nav-link').removeClass('active')
+                $(`nav > .nav-link[href='${nav}']`).addClass('active')
 
-        }
+            }
 
-        function showErrors() {
-            let errors = JSON.parse($('#errors').val())
-            for (item in errors) {
-                $(`[name='${item}']`).addClass('is-invalid')
-                for (message of errors[item]) {
-                    $(`[name='${item}']`).after(`<div class="invalid-feedback">${message}</div>`)
+            function showErrors() {
+                let errors = JSON.parse($('#errors').val())
+                for (item in errors) {
+                    $(`[name='${item}']`).addClass('is-invalid')
+                    for (message of errors[item]) {
+                        $(`[name='${item}']`).after(`<div class="invalid-feedback">${message}</div>`)
+                    }
                 }
             }
-        }
 
-        function deleteTr(btn) {
-            if (confirm('确定删除？')) {
-                let tr = btn.parents('tr')
-                let id = tr.data('id')
-                axios.delete(`/admin/users/${id}`)
-                    .then(res => {
-                        if (res.data === 'ok') {
-                            tr.hide('slow')
-                        }
-                    })
+            function deleteTr(btn) {
+                if (confirm('确定删除？')) {
+                    let tr = btn.parents('tr')
+                    let id = tr.data('id')
+                    axios.delete(`/admin/users/${id}`)
+                        .then(res => {
+                            if (res.data === 'ok') {
+                                tr.hide('slow')
+                            }
+                        })
+                }
             }
-        }
 
-        function flash(message) {
-            if (0 !== tick) {
-                clearTimeout(tick)
+            function flash(message) {
+                if (0 !== tick) {
+                    clearTimeout(tick)
+                }
+                $('#notice-div').show()
+                    .find('.alert').html(`<i class="iconfont icon-check"></i>${message}`)
+                tick = setTimeout(() => {
+                    $('#notice-div').hide('slow')
+                }, 3000)
             }
-            $('#notice-div').show()
-                .find('.alert').html(`<i class="iconfont icon-check"></i>${message}`)
-            tick = setTimeout(() => {
-                $('#notice-div').hide('slow')
-            }, 3000)
-        }
-        // window['jzf'] = {}
-        // window['jzf']['flash'] = flash
-    })()
-
+            // window['jzf'] = {}
+            // window['jzf']['flash'] = flash
+        })()
     </script>
     @endadmin
     @stack('js')

@@ -7,6 +7,7 @@
 require('./bootstrap');
 require('chart.js');
 require('moment');
+window.Simplemde = require('simplemde');
 window.Pikaday = require('pikaday');
 window.wangEditor = require('wangeditor');
 // window.Vue = require('vue');

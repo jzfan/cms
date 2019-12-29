@@ -14,7 +14,7 @@
 
 @import '/css/pikaday.css';
 @import '/css/iconfont.css';
-
+@import '~simplemde/dist/simplemde.min.css';
 
 .navbar-laravel .nav-link {
     padding: 0
@@ -43,3 +43,4 @@
         width: 92vw;
     }
 }
+
