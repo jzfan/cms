@@ -25,7 +25,7 @@
                     <a href="#services" class="nav-link g-color-white p-0">服务</a>
                   </li>
                   <li class="nav-item g-mx-10--lg g-mx-15--xl g-mb-7 g-mb-0--lg">
-                    <a href="#processes" class="nav-link g-color-white p-0">进程</a>
+                    <a href="#processes" class="nav-link g-color-white p-0">流程</a>
                   </li>
                   <li class="nav-item g-mx-10--lg g-mx-15--xl g-mb-7 g-mb-0--lg">
                     <a href="#projects" class="nav-link g-color-white p-0">项目</a>

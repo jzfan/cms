@@ -62,7 +62,7 @@ php artisan db:backup
 
 ## 界面
 
-![show](http://un-sv.com/img/github/all.gif)
+![show](https://raw.githubusercontent.com/jzfan/cms/master/public/img/intro.gif)
 
 
 ## License
