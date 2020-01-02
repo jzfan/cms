@@ -26,7 +26,7 @@
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                <tr data-id='{{ $user->id }}'>
+                <tr data-id='{{ $user->id }}' data-resource='users'>
                     <th scope="row">{{ $user->id }}</th>
                     <td><img src="/img/{{ $user->avatar }}" width="44px" class="rounded-circle" /> {{ $user->name }}</td>
                     <td>{{ $user->role }}</td>
@@ -49,9 +49,8 @@
 @endsection
 @push('js')
 <script>
-// function exportUsers() {
-//     axios.post('/admin/users/export')
-// }
-
+    // function exportUsers() {
+    //     axios.post('/admin/users/export')
+    // }
 </script>
 @endpush

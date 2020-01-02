@@ -18,7 +18,7 @@
     <div id="app">
         @admin
         @include('layouts.nav')
-        @include('layouts.notice')
+        @include('layouts.flash')
         <main>
             <div class="container-fluid">
                 <div class="row">
@@ -47,7 +47,6 @@
     @admin
     <script>
         (function() {
-
             const nav = getNav()
             let tick = 0
             toggleActiveNav()
@@ -88,7 +87,8 @@
                 if (confirm('确定删除？')) {
                     let tr = btn.parents('tr')
                     let id = tr.data('id')
-                    axios.delete(`/admin/users/${id}`)
+                    let resource = tr.data('resource')
+                    axios.delete(`/admin/${resource}/${id}`)
                         .then(res => {
                             if (res.data === 'ok') {
                                 tr.hide('slow')
@@ -101,8 +101,10 @@
                 if (0 !== tick) {
                     clearTimeout(tick)
                 }
-                $('#notice-div').show()
-                    .find('.alert').html(`<i class="iconfont icon-check"></i>${message}`)
+                $('#notice-div')
+                    .find('.notice-alert')
+                    .addClass('alert-success')
+                    .html(message)
                 tick = setTimeout(() => {
                     $('#notice-div').hide('slow')
                 }, 3000)

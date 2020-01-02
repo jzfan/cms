@@ -24,7 +24,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-Builder::defaultStringLength(191); // Update defaultStringLength
+        Builder::defaultStringLength(191); // Update defaultStringLength
+        \Spatie\Flash\Flash::levels([
+            'success' => 'alert-success',
+            'warning' => 'alert-warning',
+            'error' => 'alert-danger',
+        ]);
         \Blade::if('admin', function () {
             return auth()->check() && auth()->user()->isAdmin();
         });

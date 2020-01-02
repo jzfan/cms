@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -33,8 +33,8 @@ class UserController extends Controller
     {
         $data = $this->checkInput();
         User::create($data);
-        session()->flash('notice', "新建操作成功");
-        return redirect()->route('users.index');
+        flash()->success('操作成功');
+        return back();
     }
 
     public function update(User $user)
@@ -46,8 +46,9 @@ class UserController extends Controller
                 Rule::unique('users')->ignore($user->id),
             ],
         ]);
-        $user->update($data) && session()->flash('notice', "更新操作成功");
-        return redirect()->route('users.index');
+        $user->update($data);
+        flash()->success('操作成功');
+        return back();
     }
 
     public function destroy(User $user)
@@ -68,5 +69,4 @@ class UserController extends Controller
 
         return $this->validate(request(), $rule);
     }
-
 }

@@ -39,5 +39,5 @@ Route::middleware(['auth', 'admin'])
         Route::get('chart/users', 'ChartController@users');
         Route::get('export/users', 'ExportController@users');
         Route::resource('users', 'UserController');
-
+        Route::resource('articles', 'ArticleController');
     });
