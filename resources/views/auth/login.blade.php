@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1 class="text-center" style="margin-bottom: 30px;margin-top: 10px;">
-                <span class="text-secondary font-weight-light mr-1">Jz</span><span class="text-primary">Admin</span>
+                <span class="text-secondary font-weight-light mr-1"></span><span class="text-primary">后台</span>
             </h1>
             <div class="card">
                 <div class="card-header"><i class="iconfont icon-login"></i>登录</div>

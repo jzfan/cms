@@ -11,8 +11,19 @@
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::redirect('/', '/admin');
+Route::any('/wx/server', 'ServerController@index');
+Route::any('/wx/blogs-today', 'ServerController@blogsToday');
+
+Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
+    Route::get('/user', function () {
+        $user = session('wechat.oauth_user.default'); // 拿到授权用户资料
+
+        dd($user);
+    });
 });
 
 Auth::routes(['register' => false]);
