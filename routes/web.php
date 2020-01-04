@@ -15,8 +15,12 @@
 //     return view('welcome');
 // });
 Route::redirect('/', '/admin');
-Route::any('/wx/server', 'ServerController@index');
-Route::any('/wx/blogs-today', 'ServerController@blogsToday');
+
+Route::namespace('\App\Wx')->prefix('wx')->group(function() {
+    Route::any('server', 'ServerController@index');
+    Route::any('blogs-today', 'ServerController@blogsToday');
+    
+});
 
 Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
     Route::get('/user', function () {

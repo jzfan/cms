@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Wx;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use EasyWeChat\Factory;
+use App\Wx\Handlers;
 
 class ServerController extends Controller
 {
@@ -24,9 +26,10 @@ class ServerController extends Controller
         $app->server->push(function ($message) {
             switch ($message['MsgType']) {
                 case 'event':
-                    return '收到事件消息';
+                    return (new Handlers\EventHandler($message))->handle();
                     break;
                 case 'text':
+                    return \json_encode($message);
                     return '收到文字消息';
                     break;
                 case 'link':
