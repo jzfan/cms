@@ -16,18 +16,13 @@
 // });
 Route::redirect('/', '/admin');
 
-Route::namespace('\App\Wx')->prefix('wx')->group(function() {
+Route::namespace('\App\Wx')->prefix('wx')->group(function () {
     Route::any('server', 'ServerController@index');
-    Route::any('blogs-today', 'ServerController@blogsToday');
-    
+    Route::resource('articles', 'ArticleController');
 });
 
-Route::group(['middleware' => ['web', 'wechat.oauth']], function () {
-    Route::get('/user', function () {
-        $user = session('wechat.oauth_user.default'); // 拿到授权用户资料
-
-        dd($user);
-    });
+Route::group(['middleware' => ['web', 'wechat.oauth:default,snsapi_userinfo']], function () {
+    Route::get('/user', '\App\Wx\ServerController@user');
 });
 
 Auth::routes(['register' => false]);

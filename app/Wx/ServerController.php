@@ -3,7 +3,6 @@
 namespace App\Wx;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use EasyWeChat\Factory;
 use App\Wx\Handlers;
 
@@ -12,24 +11,28 @@ class ServerController extends Controller
     public function index()
     {
         $config = [
-            'app_id' => env('WX_API_ID'),
-            'secret' => env('WX_SECRET'),
-            'token' => env('WX_TOKEN'),
+            'app_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID'),
+            'secret' => env('WECHAT_OFFICIAL_ACCOUNT_SECRET'),
+            'token' => env('WECHAT_OFFICIAL_ACCOUNT_TOKEN'),
             'response_type' => 'array',
             //...
         ];
-        
+
         $app = Factory::officialAccount($config);
         // $app->menu->delete();
         $app->menu->create($this->menu());
-        
+
         $app->server->push(function ($message) {
             switch ($message['MsgType']) {
                 case 'event':
                     return (new Handlers\EventHandler($message))->handle();
                     break;
                 case 'text':
-                    return \json_encode($message);
+                    return <<<heredoc
+                            <a href='http://card.aa086.com/hot-blogs'>文章1</a>\n
+                            <a href='http://card.aa086.com/user'>文章2</a>
+                    heredoc;
+                    // return 'http://card.aa086.com/user';
                     return '收到文字消息';
                     break;
                 case 'link':
@@ -37,17 +40,16 @@ class ServerController extends Controller
                     break;
                 case 'file':
                     return '收到文件消息';
-                // ... 其它消息
+                    // ... 其它消息
                 default:
                     return '收到其它消息';
                     break;
             }
-        
         });
 
         return $app->server->serve();
     }
-    
+
 
     protected function menu()
     {
@@ -55,39 +57,30 @@ class ServerController extends Controller
             [
                 "type" => "view",
                 "name" => "文章推荐",
-                "url"  => "http://card.aa086.com/wx/blogs-today"
+                "url"  => "http://card.aa086.com/wx/articles/index"
             ],
             [
                 "type" => "click",
                 "name" => "文章推荐",
-                "key"  => "V1002_TODAY_BLOG"
-            ],
-            // [
-            //     "name"       => "菜单",
-            //     "sub_button" => [
-            //         [
-            //             "type" => "view",
-            //             "name" => "搜索",
-            //             "url"  => "http://www.soso.com/"
-            //         ],
-            //         [
-            //             "type" => "view",
-            //             "name" => "视频",
-            //             "url"  => "http://v.qq.com/"
-            //         ],
-            //         [
-            //             "type" => "click",
-            //             "name" => "赞一下我们",
-            //             "key" => "V1001_GOOD"
-            //         ],
-            //     ],
-            // ],
+                "url"  => "http://card.aa086.com/wx/blogs-today"
+            ]
         ];
     }
 
 
-    public function blogsToday()
+    public function user()
     {
-        return 1234;
+        $config = [
+            'app_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID'),
+            'secret' => env('WECHAT_OFFICIAL_ACCOUNT_SECRET'),
+            'token' => env('WECHAT_OFFICIAL_ACCOUNT_TOKEN'),
+            'response_type' => 'array',
+            //...
+        ];
+        $app = Factory::officialAccount($config);
+
+        $user = session('wechat.oauth_user.default'); // 拿到授权用户资料
+        $user = $app->user->get($user['id']);
+        dd($user);
     }
 }
