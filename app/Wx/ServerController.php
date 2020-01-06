@@ -28,12 +28,8 @@ class ServerController extends Controller
                     return (new Handlers\EventHandler($message))->handle();
                     break;
                 case 'text':
-                    return <<<heredoc
-                            <a href='http://card.aa086.com/hot-blogs'>文章1</a>\n
-                            <a href='http://card.aa086.com/user'>文章2</a>
-                    heredoc;
-                    // return 'http://card.aa086.com/user';
-                    return '收到文字消息';
+                    return Gzh::userInfo();
+                    // return '收到文字消息';
                     break;
                 case 'link':
                     return '收到链接消息';
@@ -55,32 +51,15 @@ class ServerController extends Controller
     {
         return [
             [
-                "type" => "view",
+                "type" => "click",
                 "name" => "文章推荐",
-                "url"  => "http://card.aa086.com/wx/articles/index"
+                "key" => "articles"
             ],
             [
                 "type" => "click",
-                "name" => "文章推荐",
-                "url"  => "http://card.aa086.com/wx/blogs-today"
+                "name" => "个人中心",
+                "key" => "me"
             ]
         ];
-    }
-
-
-    public function user()
-    {
-        $config = [
-            'app_id' => env('WECHAT_OFFICIAL_ACCOUNT_APPID'),
-            'secret' => env('WECHAT_OFFICIAL_ACCOUNT_SECRET'),
-            'token' => env('WECHAT_OFFICIAL_ACCOUNT_TOKEN'),
-            'response_type' => 'array',
-            //...
-        ];
-        $app = Factory::officialAccount($config);
-
-        $user = session('wechat.oauth_user.default'); // 拿到授权用户资料
-        $user = $app->user->get($user['id']);
-        dd($user);
     }
 }

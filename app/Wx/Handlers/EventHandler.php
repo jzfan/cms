@@ -37,7 +37,7 @@ class EventHandler
     public function onClickArticles()
     {
         $articles = \App\Article::orderBy('id', 'desc')
-            ->limit(5)
+            ->limit(10)
             ->get();
         $str = '';
         foreach ($articles as $a) {
